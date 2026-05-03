@@ -1,0 +1,42 @@
+,,                                       DATA CLEANING & PREPARATION LOG,,
+,Step No,Issue Identified,Columns Affected,Action Taken
+,1,Raw dataset extraction and structuring required,All columns,"Extracted ~40,000 records from ORIGINAL_DATASET using Python and created structured RAW_DATASET for preprocessing"
+,2,Need for clean analytical dataset,All columns,Imported cleaned base data into CLEANED_DATASET using ARRAYFORMULA to maintain dynamic updates
+,3,Inconsistent date formats,"Date of Occurrence, Date Reported, Date Case Closed",Standardized all date fields into uniform date format for accurate temporal analysis
+,4,Inconsistent time format,Time of Occurrence,Standardized time values to proper time format for time-of-day grouping
+,5,Blank or invalid records present,All columns,Removed unwanted blank and invalid rows from dataset
+,6,Missing categorical values,"Weapon Used, Victim Gender, Date Case Closed",Cleaned empty values and recoded missing case closure as “Not Closed”
+,7,Inconsistent categorical labels,"City, Crime Domain, Crime Description",Standardized naming conventions to ensure consistent grouping in pivots
+,8,Risk of formula errors due to null values,Derived columns,Verified formulas and ensured no breakage from missing values
+,9,Combined temporal fields,Date–time fields,Split combined date-time columns into separate date and time attributes
+,10,Need for analytical time variables,Date of Occurrence,Created derived columns: Month of Crime and Year of Crime
+,11,Need for scalable derived fields,Analytical columns,Ensured all engineered variables are formula-driven for dynamic updates
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,                                      Data Dictionary,,,
+,Column Name,Data Type,Unit,Description
+,Report Number,Integer,ID,Unique identifier for each crime case
+,Date Reported,DateTime,YYYY-MM-DD HH:MM,Date and time when crime was reported
+,Date of Occurrence,Date,YYYY-MM-DD,Actual date of crime occurrence
+,Time of Occurrence,Time,HH:MM,Time when crime occurred
+,City,Text (Categorical),NA,City where crime occurred
+,Crime Code,Integer,Code,Numeric code representing crime type
+,Crime Description,Text (Categorical),NA,Specific crime category
+,Victim Age,Integer,Years,Age of victim
+,Victim Gender,Text (Categorical),NA,Gender of victim
+,Weapon Used,Text (Categorical),NA,Weapon or instrument involved
+,Crime Domain,Text (Categorical),NA,Broad crime category grouping
+,Police Deployed,Integer,Count,Number of officers assigned
+,Ticket Status,Text (Categorical),NA,Investigation status (Active/Solved)
+,Date Case Closed,Date,YYYY-MM-DD,Date of case closure
+,Victim Group,Text (Categorical),NA,Age group (Minor/Adult/Senior)
+,Resolution Category,Text (Categorical),NA,Closure speed classification
+,Time Of Crime,Text (Categorical),NA,Time period (Morning/Afternoon/Night)
+,Month of Crime,Integer,Month,Extracted month of occurrence
+,Year of Crime,Integer,Year,Extracted year of occurrence
+,Resolution_Days,Integer,Days,Days between occurrence and closure
+,Reporting_Delay,Integer,Days,Days between occurrence and reporting
